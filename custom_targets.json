@@ -1,0 +1,31 @@
+{
+    "NUCLEO_F722ZE": {
+        "inherits": [
+            "MCU_STM32F7"
+        ],
+        "extra_labels_add": [
+            "STM32F722xE",
+            "STM32F722ZE"
+        ],
+        "config": {
+            "d11_configuration": {
+                "help": "Value: PA_7 for the default board configuration, PB_5 in case of solder bridge update (SB121 off/ SB122 on)",
+                "value": "PA_7",
+                "macro_name": "STM32_D11_SPI_ETHERNET_PIN"
+            }
+        },
+        "macros_add": [
+            "STM32F722xx"
+        ],
+        "supported_form_factors": [
+            "ARDUINO_UNO"
+        ],
+        "detect_code": [
+            "1816"
+        ],
+        "device_has_add": [
+            "USBDEVICE"
+        ],
+        "device_name": "STM32F722ZETx",
+    },
+}
