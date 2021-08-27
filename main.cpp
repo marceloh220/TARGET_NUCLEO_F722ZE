@@ -9,8 +9,6 @@ DigitalOut led3(LED3);
 DigitalIn bt(BUTTON1);
 
 EventQueue event_queue;
-void blink_led1();
-void blink_led2();
 
 void blink_led1() { led1 = !led1; }
 
