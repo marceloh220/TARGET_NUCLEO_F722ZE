@@ -3,38 +3,36 @@
 #include "mbed.h"
 #include <cstdio>
 
-DigitalOut led1(LED1);
-DigitalOut led2(LED2);
-DigitalOut led3(LED3);
-DigitalIn bt(BUTTON1);
+DigitalOut ldGreen(LED1);
+DigitalOut ldBlue(LED2);
+DigitalOut ldRed(LED3);
+DigitalIn btUser(BUTTON1);
 
-EventQueue event_queue;
-void blink_led1();
-void blink_led2();
+EventQueue event_queue;;
 
-void blink_led1() { led1 = !led1; }
+void blink_ldGreen() { ldGreen = !ldGreen; }
 
-void blink_led2() { led2 = !led2; }
+void blink_ldBlue() { ldBlue = !ldBlue; }
 
-void button_led3() {
+void button_btUser() {
   static int buttom_mem = 0;
 
-  if (bt && !buttom_mem) {
+  if (btUser && !buttom_mem) {
     buttom_mem = 1;
-    led3 = !led3;
-    if (led3)
-      printf("LED3: on\n");
+    ldRed = !ldRed;
+    if (ldRed)
+      printf("LED Red: on\n");
     else
-      printf("LED3: off\n");
-  } else if (!bt)
+      printf("LED Red: off\n");
+  } else if (!btUser)
     buttom_mem = 0;
 }
 
 int main() {
 
-  event_queue.call_every(500ms, blink_led1);
-  event_queue.call_every(1s, blink_led2);
-  event_queue.call_every(100ms, button_led3);
+  event_queue.call_every(500ms, blink_ldGreen);
+  event_queue.call_every(1s, blink_ldBlue);
+  event_queue.call_every(100ms, button_btUser);
   event_queue.dispatch_forever();
 
   int count = 0;
