@@ -9,20 +9,25 @@ DigitalOut led3(LED3);
 DigitalIn bt(BUTTON1);
 
 EventQueue event_queue;
+void blink_led1();
+void blink_led2();
 
 void blink_led1() { led1 = !led1; }
 
 void blink_led2() { led2 = !led2; }
 
 void button_led3() {
-    static int buttom_mem = 0;
+  static int buttom_mem = 0;
 
-    if (bt && !buttom_mem) {
-        buttom_mem = 1;
-        led3 = !led3;
-        printf("LED3: %d %c", (int)led3, '\n');
-    }
-    else if(!bt) buttom_mem = 0;
+  if (bt && !buttom_mem) {
+    buttom_mem = 1;
+    led3 = !led3;
+    if (led3)
+      printf("LED3: on\n");
+    else
+      printf("LED3: off\n");
+  } else if (!bt)
+    buttom_mem = 0;
 }
 
 int main() {
